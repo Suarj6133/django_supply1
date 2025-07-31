@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Performane</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/performance.css' %}">
+</head>
+<body>
+    <p>Hi {{ request.user.username }}</p>
+    <a href="{%url 'logout' %}">Logout</a>
+    <div class="top-right-corner">stratg.in</div><br><br>
+    <h2>My Performance</h2>
+    <div class="myPerformance">
+        <div class="overall"> <p class="p1">  Overall Performance<br></p> 
+        <pre>{{ totals }}</pre>
+
+        <table>
+            <tr>
+                <th>Revenue</th>
+                <th>Expenditure</th>
+                <th>Profit</th>
+            </tr>
+            <tr>
+                <td id="cumulativerevneue">{{ totals.total_revenue|default:0 }}</td>
+                <td id="cumulativeexpense">{{ totals.total_expense|default:0 }}</td>
+                <td id="cumulativeprofit">{{ totals.total_profit|default:0 }}</td>
+        </table>
+        </div>
+    </div>
+
+    
+    
+</body>
+</html>
